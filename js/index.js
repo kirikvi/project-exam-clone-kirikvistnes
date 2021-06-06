@@ -6,13 +6,10 @@ async function fetchPosts(){
     try {
         const search = await fetch(url);
         const results = await search.json();
-        console.log(results);    
 
         for(let i = 0; i < results.length; i++) {
-            console.log(results[i]);
-
+    
             const image = results[i]._embedded['wp:featuredmedia']['0'];
-            console.log(image);
         
             if(i === 1){
                 break;
@@ -59,7 +56,6 @@ async function fetchWelcome(){
     try {
         const find = await fetch(welcomeUrl);
         const welcomeContent = await find.json();
-        console.log(welcomeContent); 
        
         welcome.innerHTML += `
         <div>

@@ -11,13 +11,10 @@ async function createPost(){
     try {
         const search = await fetch(postUrl);
         const postResult = await search.json();
-        console.log(postResult);
 
         title.innerHTML = "KoN | " + postResult.title.rendered;
 
         const image = postResult._embedded['wp:featuredmedia']['0'];
-        console.log(image);
-
         const dateTime = postResult.date;
         const date = dateTime.substring(0,10);
 

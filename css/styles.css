@@ -416,6 +416,25 @@ footer p {
     text-align: center;
 }
 
+.search-bar {
+    text-align: center;
+    margin: 20px auto 40px;
+}
+.search-bar input {
+    width: 60%;
+}
+
+.search-button,
+.search-bar input{
+    display: inline-block;
+    padding: 10px;
+    margin: auto;
+}
+
+.search-results {
+    display: none;
+}
+
 .archive a,
 .archive-item a {
     overflow: hidden;
@@ -758,7 +777,7 @@ footer p {
 
     .archive-item img {
        height:100px;
-       max-width: 100%
+       width: 100%;
     }
 
     .archive-item figure {

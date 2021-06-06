@@ -6,8 +6,7 @@ const loader = document.querySelector(".loader");
 async function fetchContact(){
     try {
         const search = await fetch(url);
-        const content = await search.json();
-        console.log(content);    
+        const content = await search.json();  
        
         contact.innerHTML += `
         <div>
@@ -19,7 +18,6 @@ async function fetchContact(){
         if(content){
             loader.style.display = "none";
         }
-
     }
 
     catch(error){

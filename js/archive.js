@@ -8,12 +8,10 @@ async function fetchPosts(){
     try {
         const search = await fetch(url);
         const results = await search.json();
-        console.log(results);  
         
       // view 10 blog posts  
         for(let i = 0; i < 10; i++) {
             const postList = results[i];
-            console.log(results[i]);
             
             const shortText = postList.excerpt.rendered.substring(0,135) + "...";
 
@@ -59,6 +57,42 @@ async function fetchPosts(){
                     <p>You've reached the last post</p>`;
                 }
             }
+        }
+
+        // SEARCH
+        const searchContainer = document.querySelector(".search-results");
+        const searchInput = document.querySelector(".search");
+        const searchButton = document.querySelector(".search-button");
+        const blogList = results;
+
+        function searchResults(searchValue){
+            searchContainer.innerHTML = ""; 
+            searchValue.forEach(function(searchResult){
+                searchContainer.innerHTML += `
+                <a href="post.html?id=${searchResult.id}">
+                    <div class="archive-item">
+                        <p>${searchResult.content.rendered}</p>
+                        <div class="archive-text">
+                            <h2>${searchResult.title.rendered}</h2>
+                            <p>${searchResult.excerpt.rendered.substring(0,135)}..</p>
+                            <a href="post.html?id=${searchResult.id}">Read more...</a>
+                        <div>
+                    </div>
+                </a>`;
+            });
+        }
+        searchResults(blogList);
+
+        function checkValue(searchResult){
+            return searchResult.title.rendered.includes(searchInput.value);
+        }
+
+        searchButton.onclick = function filterPost(){
+            archive.innerHTML = "";
+            viewMore.style.display = "none";
+            searchContainer.style.display = "block";
+            const filteredPosts = blogList.filter(checkValue);
+            searchResults(filteredPosts);
         }
     }
 

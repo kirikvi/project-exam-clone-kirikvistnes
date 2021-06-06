@@ -5,17 +5,13 @@ async function getComment(){
     try{
         const search = await fetch(commentsUrl);
         const result = await search.json();
-        console.log(result);
 
         for(let i = 0; i < result.length; i++){
-            console.log(result[i]);
-
             comments.innerHTML += `
             <div class="comment-div">
                     <h3>${result[i].author_name} commented:</h3>
                     <p>${result[i].content.rendered}</p>
-            </div>    
-            `;
+            </div>`;
         }
     }
 

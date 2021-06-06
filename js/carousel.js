@@ -6,8 +6,7 @@ const nextArrow = document.querySelector(".next");
 async function getPosts(){
     try {
         const getPost = await fetch(carouselUrl);
-        const posts = await getPost.json();
-        console.log(posts);    
+        const posts = await getPost.json();   
 
         for(let i = 0; i < posts.length; i++) {
 
@@ -19,7 +18,6 @@ async function getPosts(){
             }
 
             const media = posts[i]._embedded['wp:featuredmedia']['0'];
-            console.log(media);
 
             const shortText = posts[i].excerpt.rendered.substring(0,120) + "...";
 

@@ -5,8 +5,7 @@ const loader = document.querySelector(".loader");
 async function fetchAbout(){
     try {
         const search = await fetch(url);
-        const content = await search.json();
-        console.log(content);    
+        const content = await search.json();   
        
         aboutContent.innerHTML += `
         <div>
